@@ -1,0 +1,24 @@
+{
+  "name": "collectible-trading-post",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Social Marketplace - Collectible Trading Post with EJS + Lit + Tailwind",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^4.22.1",
+    "uuid": "^9.0.0",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

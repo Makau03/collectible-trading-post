@@ -1,0 +1,341 @@
+/* ─── Custom Styles for Collectible Trading Post ─── */
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #0d0f1a;
+  color: #e2e6f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #141728;
+}
+::-webkit-scrollbar-thumb {
+  background: #364fc7;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4c6ef5;
+}
+
+/* ─── Background Gradient Orbs ─── */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-orb-1 {
+  width: 600px;
+  height: 600px;
+  background: #4c6ef5;
+  top: -200px;
+  right: -200px;
+}
+.bg-orb-2 {
+  width: 500px;
+  height: 500px;
+  background: #7048e8;
+  bottom: -150px;
+  left: -150px;
+}
+.bg-orb-3 {
+  width: 400px;
+  height: 400px;
+  background: #f08c00;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ─── Glass Card ─── */
+.glass {
+  background: rgba(30, 34, 53, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+.glass-light {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+}
+
+/* ─── Shimmer Loading ─── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* ─── Pulse Glow ─── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76, 110, 245, 0.4); }
+  50% { box-shadow: 0 0 20px 4px rgba(76, 110, 245, 0.2); }
+}
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ─── Fade In Animation ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* ─── Slide In ─── */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.slide-in-right {
+  animation: slideInRight 0.4s ease-out forwards;
+}
+
+/* ─── Float Animation ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ─── Button Styles ─── */
+.btn-primary {
+  background: linear-gradient(135deg, #4c6ef5 0%, #7048e8 100%);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 110, 245, 0.35);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: #bac8ff;
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #2b8a3e 0%, #37b24d 100%);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(43, 138, 62, 0.35);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #c92a2a 0%, #e03131 100%);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(201, 42, 42, 0.35);
+}
+
+/* ─── Input Styles ─── */
+.input-field {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #e2e6f0;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+.input-field:focus {
+  outline: none;
+  border-color: #4c6ef5;
+  box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+}
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ─── Badge ─── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  min-width: 20px;
+  height: 20px;
+}
+.badge-primary {
+  background: #4c6ef5;
+  color: white;
+}
+.badge-warning {
+  background: #f08c00;
+  color: white;
+}
+.badge-success {
+  background: #37b24d;
+  color: white;
+}
+
+/* ─── Page Container ─── */
+.page-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Hero Section ─── */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(76, 110, 245, 0.12) 0%, rgba(112, 72, 232, 0.08) 50%, rgba(240, 140, 0, 0.06) 100%);
+}
+
+/* ─── Chat Bubble ─── */
+.chat-bubble-sent {
+  background: linear-gradient(135deg, #4c6ef5 0%, #5c7cfa 100%);
+  color: white;
+  border-radius: 18px 18px 4px 18px;
+  padding: 10px 16px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+.chat-bubble-received {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e6f0;
+  border-radius: 18px 18px 18px 4px;
+  padding: 10px 16px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+.chat-bubble-offer {
+  background: linear-gradient(135deg, rgba(240, 140, 0, 0.2) 0%, rgba(240, 140, 0, 0.1) 100%);
+  border: 1px solid rgba(240, 140, 0, 0.3);
+  color: #f8f0e0;
+  border-radius: 16px;
+  padding: 14px 18px;
+  max-width: 85%;
+}
+
+/* ─── Modal Overlay ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ─── Toast ─── */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0 12px;
+  }
+}

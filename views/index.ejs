@@ -1,0 +1,55 @@
+<%- include('layout', { body: `
+  <!-- Background Orbs -->
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+
+  <!-- Header -->
+  <app-header></app-header>
+
+  <!-- Main Content -->
+  <main class="page-container pt-6 pb-20" role="main">
+    <!-- Hero Section -->
+    <section class="hero-gradient rounded-2xl p-8 md:p-12 mb-10 glass fade-in-up" aria-label="Welcome section">
+      <div class="max-w-2xl">
+        <h1 class="font-display text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary-300 via-primary-400 to-accent-400 bg-clip-text text-transparent">
+          Collectible Trading Post
+        </h1>
+        <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-6">
+          Discover rare collectibles, negotiate prices, and trade with fellow enthusiasts. Your next treasure awaits.
+        </p>
+        <div class="flex flex-wrap gap-4 text-sm text-gray-500">
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Verified Sellers
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+            Direct Negotiation
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            Secure Checkout
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Controls Bar -->
+    <section class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-8" aria-label="Search and controls">
+      <search-bar class="flex-1"></search-bar>
+      <button id="sell-item-btn" class="btn-primary flex items-center gap-2 whitespace-nowrap" onclick="document.querySelector('sell-item-form').open()">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        List Item
+      </button>
+    </section>
+
+    <!-- Items Grid -->
+    <section aria-label="Collectible items for sale">
+      <item-grid></item-grid>
+    </section>
+  </main>
+
+  <!-- Sell Item Modal -->
+  <sell-item-form></sell-item-form>
+` }) %>
