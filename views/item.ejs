@@ -8,6 +8,17 @@
 
   <!-- Main Content -->
   <main class="page-container pt-6 pb-20" role="main">
-    <item-detail item-data='${item}'></item-detail>
+    <item-detail id="item-detail-view"></item-detail>
   </main>
+
+  <script>
+    // Server provides item data - safely injected via script tag
+    window.__ITEM_DATA__ = ${item};
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('#item-detail-view');
+      if (el) {
+        el.setAttribute('item-data', JSON.stringify(window.__ITEM_DATA__));
+      }
+    });
+  </script>
 ` }) %>
