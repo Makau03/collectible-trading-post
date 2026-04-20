@@ -425,7 +425,7 @@ class ChatPanel extends LitElement {
       });
       this.messages = messages;
 
-      // If accepted, update the item's highest offer
+      // If accepted, update the item's highest offer and price
       if (action === 'accepted') {
         const offerMsg = this.messages.find(m => m.id === messageId);
         if (offerMsg) {
@@ -438,6 +438,13 @@ class ChatPanel extends LitElement {
               price: offerMsg.price
             })
           });
+
+          // Notify parent components that the price has changed
+          this.dispatchEvent(new CustomEvent('price-updated', {
+            detail: { newPrice: offerMsg.price, offerId: messageId },
+            bubbles: true,
+            composed: true
+          }));
         }
 
         window.dispatchEvent(new CustomEvent('show-toast', {

@@ -318,6 +318,20 @@ class ItemDetail extends LitElement {
     window.addEventListener('user-changed', () => this._loadUser());
   }
 
+  _onPriceUpdated(e) {
+    const { newPrice } = e.detail;
+    if (this.item && newPrice) {
+      this.item = { ...this.item, price: newPrice, highestOffer: newPrice };
+      this.requestUpdate();
+
+      // Also update the offer-form's displayed original price
+      const offerForm = this.shadowRoot.querySelector('offer-form');
+      if (offerForm) {
+        offerForm.setAttribute('item-price', newPrice);
+      }
+    }
+  }
+
   _loadUser() {
     const stored = localStorage.getItem('user');
     this.user = stored ? JSON.parse(stored) : null;
@@ -513,6 +527,7 @@ class ItemDetail extends LitElement {
               user-id="${this.user.id}"
               user-name="${this.user.name}"
               seller-id="${this.item.sellerId}"
+              @price-updated=${this._onPriceUpdated}
             ></chat-panel>
             <div>
               <offer-form
