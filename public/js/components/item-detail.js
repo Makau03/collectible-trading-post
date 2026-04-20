@@ -342,22 +342,31 @@ class ItemDetail extends LitElement {
   }
 
   _showChat() {
-    const chat = this.shadowRoot.querySelector('chat-panel');
-    if (chat) chat.toggleAttribute('open');
-    // Also scroll to communication section
-    this.shadowRoot.querySelector('.communication-section')?.scrollIntoView({ behavior: 'smooth' });
+    const section = this.shadowRoot.querySelector('.communication-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   _showOffer() {
     const form = this.shadowRoot.querySelector('offer-form');
-    if (form) form.open();
+    if (form) {
+      form.isOpen = true;
+      form.requestUpdate();
+      setTimeout(() => {
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
   }
 
   _showCheckout() {
-    const checkout = document.querySelector('checkout-modal');
+    const checkout = this.shadowRoot.querySelector('checkout-modal');
     if (checkout) {
-      checkout.setAttribute('item-data', JSON.stringify(this.item));
-      checkout.setAttribute('open', '');
+      checkout.isOpen = true;
+      checkout.requestUpdate();
+      setTimeout(() => {
+        checkout.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
     }
   }
 
